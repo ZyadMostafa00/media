@@ -1,0 +1,10 @@
+.bgc {
+	/* height: 100vh;
+	width: 100vw; */
+	overflow: hidden;
+}
+.ac {
+	background-color:var(--main-color);
+	color: var(--main-color);
+}
+

@@ -1,0 +1,76 @@
+<div class="container">
+
+  <div class="row">
+    <div class="col-md-3">
+      <img *ngIf="item.poster_path"  class="w-100" [src]="'https://image.tmdb.org/t/p/w500/'+item.poster_path" alt="">
+      <img  *ngIf="item.profile_path" class="w-100" [src]="'https://image.tmdb.org/t/p/w500/'+item.profile_path" alt="">
+    </div>
+
+
+    <div class="col-md-9 d-flex align-items-center">
+        <div>
+
+
+            <h3 class=" text-light my-2">  {{item.title}}{{ item.name }} </h3>
+            <!-- <p *ngIf="item.known_for_department">Known For: {{ item.known_for_department }}</p> -->
+            <h5  *ngIf="item.release_date" class="text-light my-2"><span class="text-secondary"> Release Date:</span>  {{item.release_date}}</h5>
+            <h5  *ngIf="item.first_air_date" class="text-light my-2"><span class="text-secondary"> Release Date:</span>  {{item.first_air_date}}</h5>
+            <p   *ngIf="item.overview" class=" py-2 text-info ">  Overview : {{item.overview }}</p>
+            <h6 *ngIf="item.vote_count" class="text-light">vote Count: {{item.vote_count}}</h6>
+            <h6 *ngIf="item.vote_average" class="text-warning">vote Average: {{item.vote_average.toFixed(1)}}</h6>
+            <h5>{{item.known_for}}</h5>
+
+            <!-- <h5>{{known_for.title}}</h5> -->
+            <p *ngIf="item.known_for_department"  class="text-secondary">Known For: {{ item.known_for_department }}</p>
+            <p *ngIf="item.biography " class="text-info"> <span class="fw-bolder h4">Biography:</span>   {{ item.biography }}</p>
+            <p *ngIf="item.birthday"  class="text-warning">Birthday: {{ item.birthday }}</p>
+            <p *ngIf="item.place_of_birth" class="text-light">Place of Birth: {{ item.place_of_birth }}</p>
+
+
+            <!-- <div *ngFor="let item of people" class="col-md-4">
+              <h2>{{ item.name }}</h2>
+               <p>Known For: {{ item.known_for_department }}</p>
+              <div *ngFor="let knownFor of item.known_for">
+                <h3>{{ knownFor.title }}</h3>
+                <p>{{ knownFor.overview }}</p>
+              </div>
+            </div> -->
+
+
+
+            <!-- <p *ngIf="item.popularity">Popularity: {{ item.popularity }}</p> -->
+
+    </div>
+  </div>
+
+  <div class="row  p-2">
+
+
+    <div *ngFor="let item of similarMovies"  class="col-md-2"  >
+      <div class="item position-relative">
+        <div   (click)="getSimilar(item.id, mediaType)" class="item position-relative">
+          <div *ngFor="let knownFor of item.known_for">
+
+            <h3>{{ knownFor.title }}</h3>
+                  <p>{{ knownFor.overview }}</p>
+                </div>
+           <img *ngIf="item.poster_path" class="w-100" [src]="'https://image.tmdb.org/t/p/w500/'+item.poster_path" alt="">
+           <img *ngIf="item.profile_path" class="w-100" [src]="'https://image.tmdb.org/t/p/w500/'+item.profile_path" alt="">
+           <h3 class="h6 my-2">  {{item.title}} {{item.name}}</h3>
+           <div *ngIf="item.vote_average" class="Rating position-absolute top-0 end-0 text-white p-1"> {{item.vote_average.toFixed(1)}}</div>
+
+       </div>
+  </div>
+  </div></div>
+
+
+  <!-- <div class="row">
+    <div *ngFor="let person of people" class="col-md-4">
+      <h2>{{ person.name }}</h2>
+       <p>Known For: {{ person.known_for_department }}</p>
+      <div *ngFor="let knownFor of person.known_for">
+        <h3>{{ knownFor.title }}</h3>
+        <p>{{ knownFor.overview }}</p>
+      </div>
+    </div>
+  </div> -->

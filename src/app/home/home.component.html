@@ -1,0 +1,48 @@
+<!-- home.component.html -->
+<app-header [headerTreandingMovies]="trendingMovies"></app-header>
+<div class="container my-2">
+  <div class="row py-2">
+    <input class="form-control mb-3 py-2" type="text" placeholder="Search Movies" [(ngModel)]="searchTextMovies">
+    <div class="col-md-4">
+      <div>
+        <div class="brdr w-25 mb-3"></div>
+        <h2 class="h5">Trending <br> Movies <br> To Watch Right Now</h2>
+        <p class="text-danger py-2">Most Watched Movies By The Day</p>
+        <div class="brdr w-100 mb-3"></div>
+      </div>
+    </div>
+    <div *ngFor="let movie of trendingMovies | search:searchTextMovies" class="col-md-2">
+      <app-medai-item [item]="movie"></app-medai-item>
+    </div>
+  </div>
+
+  <div class="row py-5">
+    <input class="form-control mb-3 py-2" type="text" placeholder="Search TV Shows" [(ngModel)]="searchTextTv">
+    <div class="col-md-4 d-flex align-items-center">
+      <div>
+        <div class="brdr w-25 mb-3"></div>
+        <h2 class="h5">Trending <br> TV <br> To Watch Right Now</h2>
+        <p class="text-danger py-2">Most Watched TV Shows By The Day</p>
+        <div class="brdr w-100 mb-3"></div>
+      </div>
+    </div>
+    <div *ngFor="let tv of trendingTv | search:searchTextTv" class="col-md-2">
+      <app-medai-item [item]="tv"></app-medai-item>
+    </div>
+  </div>
+
+  <div class="row py-5">
+    <input class="form-control mb-3 py-2" type="text" placeholder="Search People" [(ngModel)]="searchTextPeople">
+    <div class="col-md-4 d-flex align-items-center">
+      <div>
+        <div class="brdr w-25 mb-3"></div>
+        <h2 class="h5">Trending <br> People <br> To Watch Right Now</h2>
+        <p class="text-danger py-2">Most Watched People By The Day</p>
+        <div class="brdr w-100 mb-3"></div>
+      </div>
+    </div>
+    <div *ngFor="let person of trendingPeople | search:searchTextPeople" class="col-md-2">
+      <app-medai-item [item]="person"></app-medai-item>
+    </div>
+  </div>
+</div>

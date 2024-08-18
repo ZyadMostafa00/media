@@ -1,0 +1,24 @@
+
+
+<div class="w-75 py-3  mx-auto">
+  <div *ngIf="error" class="alert alert alert-danger">{{error}}</div>
+  <form  (ngSubmit)="submitloginform(loginform)"  [formGroup]="loginform">
+    <label for="email"> email:</label>
+    <input formControlName="email" type="email" class="form-control input-mine " id="email">
+    <div *ngIf="loginform.get('email')?.errors && loginform.get('email')?.touched" class="alert alert-danger p-1 " >
+      <p class="m-0"  *ngIf="loginform.get('email')?.getError('required')"> email  Is Required !!!</p>
+      <p class="m-0"  *ngIf="loginform.get('email')?.getError('email')">email is invalid</p>
+    </div>
+    <label for="password"> password:</label>
+    <input formControlName="password" type="password" class="form-control input-mine">
+    <div *ngIf="loginform.get('password')?.errors && loginform.get('password')?.touched" class="alert alert-danger p-1 " >
+      <p class="m-0"  *ngIf="loginform.get('password')?.getError('required')"> Password Is Required !!!</p>
+      <p class="m-0"  *ngIf="loginform.get('password')?.getError('pattern')"> start with UpperCase</p>
+
+    </div>
+    <button [disabled]="loginform.invalid" type="submit" class="btn btn-info mt-2 p-2">
+      <span *ngIf="!isloading">Register</span>
+      <i *ngIf="isloading"  class="fas fa-spinner fa-spin "></i>
+    </button>
+  </form>
+</div>
